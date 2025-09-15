@@ -1,0 +1,111 @@
+<div class="form-container" >
+    <h2> Registrar Nuevo Doctor</h2>
+
+    <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()" >
+
+
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input 
+                type="text"
+                id="name"
+                formControlName="name"
+                placeholder="Ingrese el Nombre del doctor"
+                [class.invalid]="isFildInvalid('name')"
+            >
+            <div *ngIf="isFildInvalid('name')" class="error-messages">
+                <span *ngIf="hasError('name','required')" class="error">El Nombre del doctor es obligatorio .</span>                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Edad:</label>
+            <input 
+                type="number"
+                id="age"
+                formControlName="age"
+                placeholder="Ingrese la edad del paciente"
+                [class.invalid]="isFildInvalid('age')"
+            >
+            <div *ngIf="isFildInvalid('age')" class="error-messages">
+                <span *ngIf="hasError('age','required')" class="error">La edad del paciente es obligatorio.</span>
+            </div>
+        </div>    
+
+         <div class="form-group">
+            <label for="specialty">Especialidad:</label>
+            <select 
+                id="specialty"
+                formControlName="specialty"
+                placeholder="Ingrese la especialidad del doctor"
+                [class.invalid]="isFildInvalid('specialty')"
+            >
+              <option [ngValue]="null" disabled>Selecciona la especialidad</option>
+              <option *ngFor="let s of specialtyOptions" [ngValue]="s">{{ s }}</option>
+            </select>
+              <div *ngIf="isFildInvalid('specialty')" class="error-messages">
+                <span *ngIf="hasError('specialty','required')" class="error">La especialidad del doctor es obligatorio.</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="cmp">CMP:</label>
+            <input 
+                type="number"
+                id="cmp"
+                formControlName="cmp"
+                placeholder="Ingrese el CMP del doctor"
+                [class.invalid]="isFildInvalid('cmp')"
+            >
+            <div *ngIf="isFildInvalid('cmp')" class="error-messages">
+                <span *ngIf="hasError('cmp','required')" class="error">El CMP del doctor es obligatorio.</span>
+            </div>
+        </div>  
+
+        <div class="form-group">
+            <label for="mode">Modalidad:</label>
+            <select 
+                id="mode"
+                formControlName="mode"
+                placeholder="Ingrese la modalidad del doctor"
+                [class.invalid]="isFildInvalid('mode')"
+            >
+              <option [ngValue]="null" disabled>Selecciona la modalidad</option>
+              <option *ngFor="let s of caremodeOptions" [ngValue]="s">{{ s }}</option>
+            </select>
+              <div *ngIf="isFildInvalid('mode')" class="error-messages">
+                <span *ngIf="hasError('mode','required')" class="error">La modalidad del doctor es obligatorio.</span>
+            </div>
+        </div>
+
+         <div class="form-group">
+            <label for="sede">Sede:</label>
+            <select 
+                id="sede"
+                formControlName="sede"
+                placeholder="Ingrese la sede del doctor"
+                [class.invalid]="isFildInvalid('sede')"
+            >
+              <option [ngValue]="null" disabled>Selecciona la sede</option>
+              <option *ngFor="let s of clinicasedeOptions" [ngValue]="s">{{ s }}</option>
+            </select>
+              <div *ngIf="isFildInvalid('sede')" class="error-messages">
+                <span *ngIf="hasError('sede','required')" class="error">La sede del doctor es obligatorio.</span>
+            </div>
+        </div>       
+        
+
+        <button
+            type="submit"
+            [disabled]="doctorForm.invalid || flg_enviando"
+            class="button-group"
+        >
+        {{ flg_enviando ? 'Registrando doctor....' : 'Registrar doctor' }}
+
+        </button>
+
+
+    </form>
+
+    
+</div>

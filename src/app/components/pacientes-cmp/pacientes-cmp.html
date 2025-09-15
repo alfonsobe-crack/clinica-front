@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">👤 Lista de Pacientes</h2>
+    <button class="btn btn-primary" (click)="agregarPaciente()">
+      ➕ Agregar Paciente
+    </button>
+  </div>
+
+  <table class="table table-hover table-bordered shadow-sm" *ngIf="pacientes.length; else sinPacientes">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Nro Documento</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Edad</th>
+        <th>Peso (kg)</th>
+        <th>Fecha creación</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of pacientes; track p.id){
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nrodocumento }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.email }}</td>
+        <td>{{ p.age }}</td>
+        <td>{{ p.weight }}</td>
+        <td>{{ p.createdAt | date: 'short'}}</td>
+
+      </tr>
+    } 
+    </tbody>
+  </table>
+
+  <ng-template #sinPacientes>
+    <div class="alert alert-info text-center mt-4">
+      No hay pacientes registrados. ¡Agrega el primero!
+    </div>
+  </ng-template>
+</div>

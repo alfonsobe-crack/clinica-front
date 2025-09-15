@@ -1,0 +1,121 @@
+<div class="form-container" >
+    <h2> Registrar Nuevo Paciente</h2>
+
+    <form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()" >
+
+
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input 
+                type="text"
+                id="name"
+                formControlName="name"
+                placeholder="Ingrese el Nombre del paciente"
+                [class.invalid]="isFildInvalid('name')"
+            >
+            <div *ngIf="isFildInvalid('name')" class="error-messages">
+                <span *ngIf="hasError('name','required')" class="error">El Nombre del paciente es obligatorio .</span>                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nrodocumento">Nro Documento:</label>
+            <input 
+                type="text"
+                id="nrodocumento"
+                formControlName="nrodocumento"
+                placeholder="Ingrese el Nro Documento del paciente"
+                [class.invalid]="isFildInvalid('nrodocumento')"
+            >
+            <div *ngIf="isFildInvalid('nrodocumento')" class="error-messages">
+                <span *ngIf="hasError('nrodocumento','required')" class="error">El nro documento del paciente es obligatorio.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input 
+                type="email"
+                id="email"
+                formControlName="email"
+                placeholder="Ingrese el email del paciente"
+                [class.invalid]="isFildInvalid('email')"
+            >
+            <div *ngIf="isFildInvalid('email')" class="error-messages">
+                <span *ngIf="hasError('email','required')" class="error">El email del paciente es obligatorio.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Edad:</label>
+            <input 
+                type="number"
+                id="age"
+                formControlName="age"
+                placeholder="Ingrese la edad del paciente"
+                [class.invalid]="isFildInvalid('age')"
+            >
+            <div *ngIf="isFildInvalid('age')" class="error-messages">
+                <span *ngIf="hasError('age','required')" class="error">La edad del paciente es obligatorio.</span>
+            </div>
+        </div>    
+        
+        <div class="form-group">
+            <label for="weight">Peso(kg):</label>
+            <input 
+                type="number"
+                id="weight"
+                formControlName="weight"
+                placeholder="Ingrese el peso del paciente"
+                [class.invalid]="isFildInvalid('weight')"
+            >
+            <div *ngIf="isFildInvalid('weight')" class="error-messages">
+                <span *ngIf="hasError('weight','required')" class="error">El peso del paciente es obligatorio.</span>
+            </div>
+        </div> 
+        
+        <div class="form-group">
+            <label for="height">Talla(cm):</label>
+            <input 
+                type="number"
+                id="height"
+                formControlName="height"
+                placeholder="Ingrese la altura del paciente"
+                [class.invalid]="isFildInvalid('height')"
+            >
+            <div *ngIf="isFildInvalid('height')" class="error-messages">
+                <span *ngIf="hasError('height','required')" class="error">La talla del paciente es obligatorio.</span>
+            </div>
+        </div> 
+
+         <div class="form-group">
+            <label for="sex">Sexo:</label>
+            <select 
+                id="sex"
+                formControlName="sex"
+                placeholder="Ingrese el sexo del paciente"
+                [class.invalid]="isFildInvalid('sex')"
+            >
+              <option [ngValue]="null" disabled>Selecciona el sexo</option>
+              <option *ngFor="let s of sexoOptions" [ngValue]="s">{{ s }}</option>
+            </select>
+              <div *ngIf="isFildInvalid('sex')" class="error-messages">
+                <span *ngIf="hasError('sex','required')" class="error">El sexo del paciente es obligatorio.</span>
+            </div>
+        </div>        
+        
+
+        <button
+            type="submit"
+            [disabled]="pacienteForm.invalid || flg_enviando"
+            class="button-group"
+        >
+        {{ flg_enviando ? 'Registrando paciente....' : 'Registrar paciente' }}
+
+        </button>
+
+
+    </form>
+
+    
+</div>

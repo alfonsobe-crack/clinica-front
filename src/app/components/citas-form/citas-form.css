@@ -1,0 +1,87 @@
+/* ====== Formulario Base ====== */
+.form-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Colores principales (ajusta según tu home) */
+:root {
+  --color-primary: #0d6efd;    /* azul Bootstrap o el que uses en home */
+  --color-primary-light: #e7f1ff;
+  --color-text: #333;
+}
+
+/* Títulos */
+.form-container h2 {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Etiquetas */
+.form-container label {
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+/* Campos */
+.form-container input,
+.form-container select,
+.form-container textarea {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.15rem var(--color-primary-light);
+  outline: none;
+}
+
+/* Botones */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-actions .btn-primary {
+  background-color: var(--color-primary);
+  border: none;
+  padding: 0.6rem 1.5rem;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.form-actions .btn-primary:hover {
+  background-color: #0b5ed7; /* un tono más oscuro */
+}
+
+/* Validación */
+.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .form-container {
+    padding: 1.25rem;
+  }
+}

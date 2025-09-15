@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h4>Clínica Bernabé+</h4>
+    </div>
+
+    <ul class="list-unstyled components">
+      <li class="active">
+        <a routerLink="/home" routerLinkActive="active">🏠 Home</a>
+      </li>
+      <li class="active">
+        <a routerLink="/pacientes" routerLinkActive="active">👤 Pacientes</a>
+      </li>
+      <li>
+        <a routerLink="/doctores" routerLinkActive="active">🩺 Doctores</a>
+      </li>
+      <li>
+        <a routerLink="/citas" routerLinkActive="active">📅 Citas</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Contenido -->
+  <div id="content">
+    <nav class="navbar navbar-light bg-light shadow-sm mb-3">
+      <span class="navbar-brand mb-0 h1">Panel de Administración</span>
+    </nav>
+
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

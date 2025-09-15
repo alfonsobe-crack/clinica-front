@@ -1,0 +1,30 @@
+<form class = "form-container" [formGroup]="citaForm" (ngSubmit)="guardarCita()">
+  <div class="mb-3">
+    <label>Doctor</label>
+    <select class="form-select" formControlName="doctorId">
+      <option value="">-- Seleccione --</option>
+      <option *ngFor="let d of doctors" [value]="d.id">
+        {{ d.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label>Paciente</label>
+    <select class="form-select" formControlName="patientId">
+      <option value="">-- Seleccione --</option>
+      <option *ngFor="let p of patients" [value]="p.id">
+        {{ p.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label>Fecha y hora</label>
+    <input type="datetime-local" formControlName="fechahora" class="form-control" />
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="citaForm.invalid">
+    Registrar cita
+  </button>
+</form>

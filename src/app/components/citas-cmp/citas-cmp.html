@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">📅 Lista de Citas</h2>
+    <button class="btn btn-primary" (click)="agregarCita()">
+      ➕ Registrar Cita
+    </button>
+  </div>
+
+  <table class="table table-hover table-bordered shadow-sm" *ngIf="citas.length; else sinCitas">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Doctor</th>
+        <th>Paciente</th>
+        <th>Fecha/Hora Cita</th>
+        <th>Especialidad</th>
+        <th>Sede</th>
+        <th>Modalidad</th>
+        <th>Estado</th>
+        <th>Fecha creación</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of citas; track p.id){
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.doctorId.name }}</td>
+        <td>{{ p.patientId.name }}</td>
+        <td>{{ p.fechahora | date: 'short'}}</td>
+        <td>{{ p.specialty }}</td>
+        <td>{{ p.sede }}</td>
+        <td>{{ p.mode }}</td>
+        <td>{{ p.status }}</td>
+        <td>{{ p.createdAt | date: 'short'}}</td>
+
+      </tr>
+    }
+    </tbody>
+  </table>
+
+  <ng-template #sinCitas>
+    <div class="alert alert-info text-center mt-4">
+      No hay citas registradas. ¡Agrega la primera!
+    </div>
+  </ng-template>
+</div>
